@@ -1,0 +1,177 @@
+（1）
+#include<stdio.h>
+int f(int x),g(int x);
+int main(void){
+	int x;
+	printf("输入X的值：");
+	scanf("%d",&x);
+	printf("算出的值是：%d",f(g(x)));
+
+}
+int f(int x){
+return 2*(x+1);
+}
+int g(int x){
+return 2*x+1;
+}
+（2）
+#include<stdio.h>
+int f(int x,int y,int z){
+int b;
+if (x>y){
+   b = x;
+}else {b=y;}
+if (z>=b){
+	b =z;
+}
+return b;
+}
+
+int main(){
+    int x,y,z;
+	printf("输入三个数\(并用空格隔开\)：");
+    scanf("%d%d%d",&x,&y,&z);
+	printf("%d",f(x,y,z));
+}
+（3）
+#include<stdio.h>
+void f(int x){
+	int i,n;
+	for (n=2;n<=x;n++){
+		if ((x%n==0)&&(n!=x)){
+		i = 1;
+		break;
+		}else{
+		i = 0;
+		}
+	}
+	if (i==0){
+	printf(" %d",x);
+	}
+}
+int main(){
+    int n,x;
+	for(x=2;x<=1000;x++){
+	   f(x);
+（4）
+#include<stdio.h>
+void f(int x){
+   int a,b,c;
+   a = x/100;
+   b = (x-a*100)/10;
+   c = x-a*100-b*10;
+	   if (a*a*a+b*b*b+c*c*c==x){
+	   printf(" %d",x);
+	   
+	   }
+
+}
+int main(){
+int n = 100;
+for (n=100;n<=999;n++){
+     f(n);
+}
+
+}
+（5）
+#include <stdio.h>
+void f(int x){
+     int a=0,b=0,n;
+	 for(n=1;n<=x;n++){
+		 if ((x%n==0)&&(x!=n)){
+		  a = n ;
+		  b = a+b; 
+		 }
+	 }
+	 
+	 if (b==x){
+	 printf(" %d",x);
+	 }
+
+}
+int main(){
+int x;
+for(x=1;x<=1000;x++)
+	f(x);
+}
+（6-9）
+#include<stdio.h>
+int f(int x){
+	int n;
+	if ((x%400==0)||((x%4==0)&&(x%100!=0))){
+	 n=1;
+	}else {
+	 n=0;
+	}
+	return n;
+}
+int g(int x,int y){
+    int m;
+	
+	if (f(x)==1){
+	   
+	    if(y==2){
+	    m = 29;
+	    }else if ((y==1)||(y==3)||(y==5)||(y==7)||(y==8)||(y==10)||(y==12)){
+	    m = 31;
+	   }
+		else if((y==4)||(y==6)||(y==9)||(y==11)){
+	    m = 30;
+	   }
+	 }
+	else {
+	   if(y==2){
+	   m = 28;
+	 }
+	   else if ((y==1)||(y==3)||(y==5)||(y==7)||(y==8)||(y==10)||(y==12)){
+	   m = 31;
+	   }
+	   else if((y==4)||(y==6)||(y==9)||(y==11)){
+	   m = 30;
+	   }
+	}
+		return m;
+}
+int F(int x,int y){
+    int n,k,w=0;
+	for(n=1;n<=y;n++){
+	   if(n==2){
+		   if (f(x)==1){k = 29;}
+		   else{k = 28;}
+	}
+	   else if ((n==1)||(n==3)||(n==5)||(n==7)||(n==8)||(n==10)||(n==12)){
+	   k = 31;
+     }
+	   else if((n==4)||(n==6)||(n==9)||(n==11)){
+	   k = 30;
+	   }
+	   w = w + k;
+	}
+	return w;
+}
+int gg(int x,int y,int z){
+	int r=0,t;
+	t = F(x,y-1);
+	r = t + z;
+	return r;
+}
+int main(){
+int x,y,z;
+printf("输入一个年份：");
+scanf("%d",&x);
+f(x);
+if (f(x)==1){
+	printf(" %d是一个闰年\n",x);
+}else printf("他不是闰年\n");
+printf("这是%d年\n",x);
+printf("请你输入想知道月份：");
+	    scanf("%d",&y);
+g(x,y);
+printf("这个月一共有%d天",g(x,y));
+F(x,y);
+printf("这一年到这个月月底一共有%d天\n",F(x,y));
+printf("或许你还想说出日数：");
+scanf("%d",&z);
+gg(x,y,z);
+printf("这一天是该年的第%d天",gg(x,y,z));
+}
